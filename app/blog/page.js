@@ -6,7 +6,7 @@ import matter from "gray-matter";
 async function getAllBlogs() {
   const files = fs.readdirSync(path.join("data"));
   const blogs = files.map((fileName) => {
-    const slug = fileName.replace(".md","");
+    const slug = fileName.replace(".md", "");
     const fileData = fs.readFileSync(path.join("data", fileName), "utf-8");
     const { data } = matter(fileData);
     return {
@@ -14,24 +14,33 @@ async function getAllBlogs() {
       slug: slug,
     };
   });
+  const orderedBlogs = blogs.sort((a, b) => {
+    return b.frontmatter.id - a.frontmatter.id;
+  });
+
   return {
-    blogs: blogs,
+    blogs: orderedBlogs,
   };
 }
 
-const Blog = async() => {
-  const{blogs} = await getAllBlogs();
+const Blog = async () => {
+  const { blogs } = await getAllBlogs();
   return (
-    <div>
-      <h1>ブログページ</h1>
-      {blogs.map((blog,index) => 
-      <div key={index}>
-        <h2>{blog.frontmatter.title}</h2>
-        <p>{blog.frontmatter.date}</p>
-        <Link href={`/blog/${blog.slug}`}>Read More</Link>
+    <>
+      <div>
+        <div>
+          <h1>Blog</h1>
+          <p>エンジニアの日常生活をお届けします</p>
+          {blogs.map((blog, index) => (
+            <div key={index}>
+              <h2>{blog.frontmatter.title}</h2>
+              <p>{blog.frontmatter.date}</p>
+              <Link href={`/blog/${blog.slug}`}>Read More</Link>
+            </div>
+          ))}
+        </div>
       </div>
-      )}
-    </div>
+    </>
   );
 };
 

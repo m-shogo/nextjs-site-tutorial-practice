@@ -18,7 +18,7 @@ const SingleBlog = async (props) => {
   const { singleDocument } = await getSingleBlog(props);
   return (
     <>
-      <div>
+      <div className="img-container">
         <Image
           src={singleDocument.data.image}
           alt="blog-image"
@@ -28,8 +28,8 @@ const SingleBlog = async (props) => {
           priority={true}
         />
       </div>
-      <div>
-        <div>
+      <div className="wrapper">
+        <div className="container">
           <h1>{singleDocument.data.title}</h1>
           <p>{singleDocument.data.data}</p>
           <ReactMarkdown>{singleDocument.content}</ReactMarkdown>

@@ -6,15 +6,15 @@ import profilePic from "../public/images/profile.jpg";
 const Index = () => {
   return (
     <>
-      <div>
-        <Image src={heroPic} alt="hero"></Image>
-        <div>
+      <div className="hero">
+        <Image src={heroPic} alt="hero" />
+        <div className="textContainer">
           <h1>I'm Abe Hiroki!</h1>
           <h3>JavaScript Developer</h3>
         </div>
       </div>
-      <div>
-        <div>
+      <div className="container">
+        <div className="profile">
           <div>
             <h2>JavaScript Nerd</h2>
             <p>
@@ -31,12 +31,12 @@ const Index = () => {
             </p>
           </div>
           <div>
-            <Image src={profilePic} alt="hero"></Image>
+            <Image src={profilePic} alt="hero" />
           </div>
         </div>
-        <div>
+        <div className="skills">
           <h2>Skills</h2>
-          <div>
+          <div className="skillsContainer">
             <div>
               <img src="/images/javascript.svg" alt="javascript" />
               <span>JavaScript / 10 years</span>
@@ -55,12 +55,11 @@ const Index = () => {
             </div>
           </div>
         </div>
-        <div>
+        <div className="ctaButton">
           <Link href="/contact">Make It Happen!</Link>
         </div>
       </div>
     </>
   );
 };
-
 export default Index;

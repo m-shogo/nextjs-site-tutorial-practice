@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { getAllBlogs, getSingleBlog } from "../../utils/mdQueries";
+import { getAllBlogs, getSingleBlog } from "../utils/mdQueries";
 
 const Blog = async () => {
   const { blogs } = await getAllBlogs();
